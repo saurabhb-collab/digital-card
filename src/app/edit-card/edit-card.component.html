@@ -1,0 +1,101 @@
+ 
+    <!-- <div class="container">
+        <div class="row" *ngIf="showmsg">
+           <div class="col-xs-12">
+              <p class="alert alert-success">
+                <strong>Registered Successfully!</strong>
+              </p>
+           </div>
+       </div>
+    </div> -->
+   
+<form [formGroup]="editForm" (submit)="update(editForm.value)">
+  <div class="container">
+    <h4>Edit Card Details</h4>
+     <!-- <p>Please fill in this form to create an account.</p> -->
+   
+    <hr>
+     <label for="fname"><b>First Name</b></label><br/>
+    <input type="text" placeholder="Enter First Name" name="fname" formControlName="fname"  required> 
+    <span   *ngIf='editForm.get("fname").errors && editForm.get("fname").touched'>
+        <span class='errmsg' *ngIf='editForm.get("fname").errors.required'>This Field is Required</span>
+        <span class='errmsg' *ngIf='editForm.get("fname").errors.minlength'>Minimum 4 Length</span>
+      </span><br/><br/>
+    <label for="lname"><b>Last Name</b></label><br/>
+    <input type="text" placeholder="Enter Last Name" name="lname" formControlName="lname"  required>
+ 
+    <span *ngIf='editForm.get("lname").errors && editForm.get("lname").touched'>
+        <span class='errmsg' *ngIf='editForm.get("lname").errors.required'>This Field is Required</span>
+        <span class='errmsg' *ngIf='editForm.get("lname").errors.minlength'>Minimum 4 Length</span>
+      </span>
+      <br/><br/>
+    <label for="email"><b>Mobile</b></label><br/>
+    <input type="text" placeholder="Enter Mobile" name="email" formControlName="mobile"  required>
+
+    <span   *ngIf='editForm.get("mobile").errors && editForm.get("mobile").touched'>
+        <span class='errmsg' *ngIf='editForm.get("mobile").errors.required'>This Field is Required</span>
+        <span class='errmsg' *ngIf='editForm.get("mobile").errors.email'>Enter Valid email</span>
+      </span>
+
+      <br/><br/>
+      <label for="email"><b>Email</b></label><br/>
+      <input type="text" placeholder="Enter Email" name="email" formControlName="email"  required>
+  
+      <span   *ngIf='editForm.get("email").errors && editForm.get("email").touched'>
+          <span class='errmsg' *ngIf='editForm.get("email").errors.required'>This Field is Required</span>
+          <span class='errmsg' *ngIf='editForm.get("email").errors.email'>Enter Valid email</span>
+        </span>
+  
+        <br/><br/>
+    <label for="username"><b>Username</b></label><br/>
+    <input type="text" placeholder="Enter Username" name="username" formControlName="username"  required>    
+        <span *ngIf='editForm.get("username").errors && editForm.get("username").touched'>
+            <span class='errmsg' *ngIf='editForm.get("username").errors.required'>This Field is Required</span>
+            <span class='errmsg' *ngIf='editForm.get("username").errors.minlength'>Minimum 6 Length</span>
+          </span>
+          <br/><br/>
+    <label for="psw"><b>Password</b></label><br/>
+    <input type="text" placeholder="Enter Password" name="psw" formControlName="psw" required>
+    <span  *ngIf='editForm.get("psw").errors && editForm.get("psw").touched'>
+        <span class='errmsg' *ngIf='editForm.get("psw").errors.required'>This Field is Required</span>
+        <span class='errmsg' *ngIf='editForm.get("psw").errors.minlength'>Minimum 6 Length </span>
+      </span>
+      <br/><br/>
+      <label for="email"><b>Location</b></label><br/>
+      <input type="text" placeholder="Enter Your Location" name="email" formControlName="location"  required>
+  
+      <span   *ngIf='editForm.get("location").errors && editForm.get("location").touched'>
+          <span class='errmsg' *ngIf='editForm.get("location").errors.required'>This Field is Required</span>
+          <span class='errmsg' *ngIf='editForm.get("location").errors.email'>Enter Valid email</span>
+        </span>
+  
+        <br/><br/>
+        <label for="email"><b>Designation</b></label><br/>
+        <input type="text" placeholder="Enter Email" name="email" formControlName="designation"  required>
+    
+        <span   *ngIf='editForm.get("designation").errors && editForm.get("designation").touched'>
+            <span class='errmsg' *ngIf='editForm.get("designation").errors.required'>This Field is Required</span>
+            <span class='errmsg' *ngIf='editForm.get("designation").errors.email'>Enter Valid email</span>
+          </span>
+    
+          <br/><br/>
+          <label for="email"><b>About</b></label><br/>
+        
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="about"  required></textarea>
+          <span   *ngIf='editForm.get("about").errors && editForm.get("about").touched'>
+              <span class='errmsg' *ngIf='editForm.get("about").errors.required'>This Field is Required</span>
+              <span class='errmsg' *ngIf='editForm.get("about").errors.email'>Enter Valid email</span>
+            </span>
+      
+            <br/><br/>
+            <label for="exampleFormControlFile1"><b>Profile Picture</b></label>
+    <input type="file" class="form-control-file" name = "image" (change)="uploadProf($event)" formControlName="image" id="exampleFormC ontrolFile1">
+                
+            <br/><br/>
+             <button type="submit" [disabled]= "editForm.invalid" class="registerbtn">Update Card</button>
+           
+  </div>
+
+</form>
+ 
+

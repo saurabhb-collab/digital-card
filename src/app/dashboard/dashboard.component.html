@@ -1,0 +1,81 @@
+<div class="d-flex" id="wrapper">
+  <!-- Sidebar -->
+    <div class="bg-light border-right" id="sidebar-wrapper">
+      <div class="sidebar-heading">Deshboard</div>
+        <div class="list-group list-group-flush">
+          <a  class="list-group-item list-group-item-action bg-light">Dashboard</a>
+          <a  class="list-group-item list-group-item-action bg-light">Shortcuts</a>
+          <a  class="list-group-item list-group-item-action bg-light">Overview</a>
+          <a  class="list-group-item list-group-item-action bg-light">Events</a>
+          <a  class="list-group-item list-group-item-action bg-light">Profile</a>
+          <a  class="list-group-item list-group-item-action bg-light" (click) = "logout()" >Logout</a>
+      </div>
+    </div>
+    <!-- /#sidebar-wrapper -->
+
+    <!-- Page Content -->
+    <div id="page-content-wrapper">
+      <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+        <button class="btn btn-primary" id="menu-toggle">Toggle Menu</button>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+             <li class="nav-item active">
+              <a class="nav-link" >{{getuser}} <span class="sr-only">(current)</span></a>
+             </li>
+           </ul>
+        </div>
+      </nav>
+       <div class="container-fluid">
+        <div class="container">
+          <div class="row" *ngIf="successmsg">
+             <div class="col-xs-12">
+                <p class="alert alert-success">
+                  <strong>Deleted Successfully!</strong>
+                </p>
+             </div>
+         </div>
+      </div> 
+         <!-- <br/><br/>
+          <input class="form-control" type="text" name="search" [(ngModel)]="searchText" autocomplete="off" placeholder="Start searching for a user">
+          <br/><br/>  -->
+          <table class="table table-bordered" style="margin-top: 1rem;">
+             <thead>
+             <tr>
+                 <th>Sr. No</th>
+                 <th>Full Name</th>
+                 <th>email</th>
+                 <th>Location</th>
+                 <th>Designation</th>
+                 <th>Action</th>
+             </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let a of users let i = index">
+                <td>{{i+1}}</td>
+                  <td>{{a.fname}} {{a.lname}}</td>
+                   <td>{{a.email}}</td>
+                  <td>{{a.Location}}</td>
+                  <td>{{a.bussiness_name}}</td>
+                  <td>
+                    <button class="btn btn-outline-secondary" mwlConfirmationPopover [popoverTitle]="popoverTitle" [popoverMessage]="popoverMessage"
+                                   placement="left" (confirm)="deleteRow(a)" (cancel)="cancelClicked = true">
+                  Delete
+                  </button>&nbsp;
+                   <a class="btn btn-outline-secondary" routerLink = "/editcard/{{a.cid}}">Edit</a>&nbsp;
+                   <a class="btn btn-outline-secondary" routerLink = "/Card/{{a.cid}}">Card Preview</a>
+                </td>
+              </tr>
+          </tbody>
+         </table>  
+      </div>
+    </div>
+    <!-- /#page-content-wrapper -->
+
+  </div>
+  <!-- /#wrapper -->
+  <script>
+  
+  </script>

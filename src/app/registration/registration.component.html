@@ -1,0 +1,103 @@
+ 
+    <div class="container">
+        <div class="row" *ngIf="showmsg">
+           <div class="col-xs-12">
+              <p class="alert alert-success">
+                <strong>Registered Successfully!</strong>
+              </p>
+           </div>
+       </div>
+    </div>
+   
+<form [formGroup]="registrationForm" (submit)="registersubmit(registrationForm.value)">
+  <div class="container">
+    <h4>CREATE YOUR DIGITAL VISITING CARD</h4>
+  
+    <p>Please fill in this form to create an account.</p>
+   
+    <hr>
+     <label for="fname"><b>First Name</b></label><br/>
+    <input type="text" placeholder="Enter First Name" name="fname" formControlName="fname"  required> 
+    <span   *ngIf='registrationForm.get("fname").errors && registrationForm.get("fname").touched'>
+        <span class='errmsg' *ngIf='registrationForm.get("fname").errors.required'>This Field is Required</span>
+        <span class='errmsg' *ngIf='registrationForm.get("fname").errors.minlength'>Minimum 4 Length</span>
+      </span><br/><br/>
+    <label for="lname"><b>Last Name</b></label><br/>
+    <input type="text" placeholder="Enter Last Name" name="lname" formControlName="lname"  required>
+ 
+    <span *ngIf='registrationForm.get("lname").errors && registrationForm.get("lname").touched'>
+        <span class='errmsg' *ngIf='registrationForm.get("lname").errors.required'>This Field is Required</span>
+        <span class='errmsg' *ngIf='registrationForm.get("lname").errors.minlength'>Minimum 4 Length</span>
+      </span>
+      <br/><br/>
+    <label for="email"><b>Mobile</b></label><br/>
+    <input type="text" placeholder="Enter Mobile" name="email" formControlName="mobile"  required>
+
+    <span   *ngIf='registrationForm.get("mobile").errors && registrationForm.get("mobile").touched'>
+        <span class='errmsg' *ngIf='registrationForm.get("mobile").errors.required'>This Field is Required</span>
+        <span class='errmsg' *ngIf='registrationForm.get("mobile").errors.email'>Enter Valid email</span>
+      </span>
+
+      <br/><br/>
+      <label for="email"><b>Email</b></label><br/>
+      <input type="text" placeholder="Enter Email" name="email" formControlName="email"  required>
+  
+      <span   *ngIf='registrationForm.get("email").errors && registrationForm.get("email").touched'>
+          <span class='errmsg' *ngIf='registrationForm.get("email").errors.required'>This Field is Required</span>
+          <span class='errmsg' *ngIf='registrationForm.get("email").errors.email'>Enter Valid email</span>
+        </span>
+  
+        <br/><br/>
+    <label for="username"><b>Username</b></label><br/>
+    <input type="text" placeholder="Enter Username" name="username" formControlName="username"  required>    
+        <span *ngIf='registrationForm.get("username").errors && registrationForm.get("username").touched'>
+            <span class='errmsg' *ngIf='registrationForm.get("username").errors.required'>This Field is Required</span>
+            <span class='errmsg' *ngIf='registrationForm.get("username").errors.minlength'>Minimum 6 Length</span>
+          </span>
+          <br/><br/>
+    <label for="psw"><b>Password</b></label><br/>
+    <input type="password" placeholder="Enter Password" name="psw" formControlName="psw" required>
+    <span  *ngIf='registrationForm.get("psw").errors && registrationForm.get("psw").touched'>
+        <span class='errmsg' *ngIf='registrationForm.get("psw").errors.required'>This Field is Required</span>
+        <span class='errmsg' *ngIf='registrationForm.get("psw").errors.minlength'>Minimum 6 Length </span>
+      </span>
+      <br/><br/>
+      <label for="email"><b>Location</b></label><br/>
+      <input type="text" placeholder="Enter Your Location" name="email" formControlName="location"  required>
+  
+      <span   *ngIf='registrationForm.get("location").errors && registrationForm.get("location").touched'>
+          <span class='errmsg' *ngIf='registrationForm.get("location").errors.required'>This Field is Required</span>
+          <span class='errmsg' *ngIf='registrationForm.get("location").errors.email'>Enter Valid email</span>
+        </span>
+  
+        <br/><br/>
+        <label for="email"><b>Designation</b></label><br/>
+        <input type="text" placeholder="Enter Email" name="email" formControlName="designation"  required>
+    
+        <span   *ngIf='registrationForm.get("designation").errors && registrationForm.get("designation").touched'>
+            <span class='errmsg' *ngIf='registrationForm.get("designation").errors.required'>This Field is Required</span>
+            <span class='errmsg' *ngIf='registrationForm.get("designation").errors.email'>Enter Valid email</span>
+          </span>
+    
+          <br/><br/>
+          <label for="email"><b>About</b></label><br/>
+        
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" formControlName="about"  required></textarea>
+          <span   *ngIf='registrationForm.get("about").errors && registrationForm.get("about").touched'>
+              <span class='errmsg' *ngIf='registrationForm.get("about").errors.required'>This Field is Required</span>
+              <span class='errmsg' *ngIf='registrationForm.get("about").errors.email'>Enter Valid email</span>
+            </span>
+      
+            <br/><br/>
+            <label for="exampleFormControlFile1"><b>Profile Picture</b></label>
+    <input type="file" class="form-control-file" name = "image" (change)="uploadProf($event)" formControlName="image" id="exampleFormControlFile1">
+                
+            <br/><br/>
+             <button type="submit" [disabled]= "registrationForm.invalid" class="registerbtn">Save & Next</button>
+             <div class="container signin">
+              <p>Already have an account? <a class="nav-link" (click)="goLogin()">Sign in</a></p>
+            </div>
+  </div>
+
+</form>
+ 

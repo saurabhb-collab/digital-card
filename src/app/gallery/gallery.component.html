@@ -1,0 +1,22 @@
+
+
+<form [formGroup]="galleryForm" (submit)="photoSubmit(galleryForm.value)" novalidate>
+    <div class="container">
+      <h4>CREATE YOUR DIGITAL VISITING CARD</h4>
+       <p>Add Some Images.</p>
+      <hr>
+       <label for="exampleFormControlFile1"><b>Gallery Photos</b></label>
+         <input type="file" class="form-control-file" name = "image" (change)="uploadimages($event)" formControlName="image"  multiple>
+            <br/><br/>
+               <div class="row">
+                 <div class="container col-md-12">
+                   <img *ngFor='let url of urls; let i = index' [src]="url" width="30%" class="img-thumbnail" (click)="removeimage(i)">
+                   
+                </div>
+            </div>
+            <hr>
+               <button type="submit"  class="registerbtn">Save</button>
+              
+    </div>
+  
+  </form>

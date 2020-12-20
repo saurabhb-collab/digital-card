@@ -1,0 +1,74 @@
+
+<div class="tp-wrapper">
+	<div class="tp-box"  [@flipState]="flip" >
+		<div class="tp-box__side tp-box__front">
+            <div class="container">
+                <img class="rounded-circle"  src="assets/{{prof_pic}}">
+                
+            </div>
+            <div class="container gradient">
+                <h6>online digital card</h6>
+            </div>
+              <ul class="nav nav-tabs justify-content-center" id="myTab"  role="tablist">
+                <li *ngFor="let wallet of coinwallet; let first = first;" [ngClass]="{firstItem: first}" role="presentation" class="nav-item accounts_li" [class.active]="selectedwallet===wallet">
+                  <a class="nav-link" (click)="selectedwallet = wallet" aria-controls="one" role="tab" data-toggle="tab">{{wallet}}</a>
+                </li>
+              </ul>
+              
+              <div class="tab-content" id="myTabContent">
+                <div *ngIf="selectedwallet === coinwallet[0]" role="tabpanel" class="tab-pane active" id="one">
+                     <h5 class="font-weight-bold">{{fname}} {{lname}}</h5>
+					 <h5><a href="tel:{{mobile}}">{{mobile}}</a></h5>
+					 <h6 class="word-break"><a href="mailto:{{email}}" class="word-break">{{email}}</a></h6>
+					 <h6 class="loc">{{location}}</h6>
+                     <h6 class="mb-3 loc">{{designation}}</h6>
+                    <hr>
+                   
+                     
+                </div>
+                <div *ngIf="selectedwallet === coinwallet[1]" role="tabpanel" class="tab-pane active" id="two">Photos</div>
+              </div>
+              <div class="container socialdiv">
+                <a href="#" class="fa fa-facebook"></a>
+                <a href="#" class="fa fa-whatsapp"></a>
+                <a href="#" class="fa fa-youtube"></a>
+                <a href="#" class="fa fa-instagram"></a>
+            </div>
+            <hr>
+            <div class="container">
+                <button class="btn btn-primary btn-lg btn-block" (click)="toggleFlip()">Rotate</button>
+              </div>
+         </div>
+        
+		 <div class="tp-box__side tp-box__back">
+             <div class="container">
+                 <h5>About</h5>
+                 <p>{{about}}</p>
+             </div>
+             <hr>
+             <div class="container">
+                <h5>Website</h5>
+                <a>www.linkedin.com/in/saurabh-bonde-531073164</a>
+           
+           
+           <hr>
+           <div class="container">
+            <h5>Follow</h5>
+             <a href="#" class="fa fa-facebook"></a>
+             <a href="#" class="fa fa-whatsapp"></a>
+             <a href="#" class="fa fa-youtube"></a>
+             <a href="#" class="fa fa-instagram"></a>
+            </div>
+             <hr>
+             <div class="container">
+                 <button class="btn btn-primary btn-lg btn-block" (click)="toggleFlip()">Rotate</button>
+               </div>
+        </div>
+       
+      
+    </div>
+    
+</div>
+
+
+
